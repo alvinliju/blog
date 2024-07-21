@@ -1,290 +1,109 @@
 ---
-title: "Anthem - TryHackMe"
-author: Ludovic COULON
-pubDate: 2020-05-19
-description: "Writeup for the Anthem on TryHackMe"
+title: "Introduction to SIEM and IR"
+author: "Alvin Liju"
+pubDate: "2024-7-10"
+description: "Introduction to SEIM and Incident Response"
 ---
 
-[TryHackMe | Anthem](https://tryhackme.com/room/Anthem)
-
-This task involves you, paying attention to details and finding the 'keys to the castle'.
-
-This room is designed for beginners, however, everyone is welcomed to try it out!
-
-Enjoy the Anthem.
-
-In this room, you don't need to brute force any login page. Just your preferred browser and Remote Desktop.
-
-### #1 Let's run nmap and check what ports are open.
-
-```
-➜  TryHackMe nmap -sV -sC -A -vv 10.10.128.241
-```
-
-```
-24/tcp   filtered priv-mail     no-response
-
-80/tcp   open     http          syn-ack     Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-| http-methods:
-|_  Supported Methods: OPTIONS
-
-135/tcp  open     msrpc         syn-ack     Microsoft Windows RPC
-
-139/tcp  open     netbios-ssn   syn-ack     Microsoft Windows netbios-ssn
-
-445/tcp  open     microsoft-ds? syn-ack
-
-3389/tcp open     ms-wbt-server syn-ack     Microsoft Terminal Services
-| rdp-ntlm-info:
-|   Target_Name: WIN-LU09299160F
-|   NetBIOS_Domain_Name: WIN-LU09299160F
-|   NetBIOS_Computer_Name: WIN-LU09299160F
-|   DNS_Domain_Name: WIN-LU09299160F
-|   DNS_Computer_Name: WIN-LU09299160F
-|   Product_Version: 10.0.17763
-|_  System_Time: 2020-05-17T20:55:06+00:00
-| ssl-cert: Subject: commonName=WIN-LU09299160F
-| Issuer: commonName=WIN-LU09299160F
-| Public Key type: rsa
-| Public Key bits: 2048
-| Signature Algorithm: sha256WithRSAEncryption
-| Not valid before: 2020-04-04T22:56:38
-| Not valid after:  2020-10-04T22:56:38
-| MD5:   2814 61de 95b7 e9b5 4789 3027 7f1f 60d2
-| SHA-1: d47d 2a8f 6143 b820 936e 4120 cdd1 9ddc 5385 d285
-| -----BEGIN CERTIFICATE-----
-| MIIC4jCCAcqgAwIBAgIQObhN9c8QnIVGx+ZslzEOmzANBgkqhkiG9w0BAQsFADAa
-| MRgwFgYDVQQDEw9XSU4tTFUwOTI5OTE2MEYwHhcNMjAwNDA0MjI1NjM4WhcNMjAx
-| MDA0MjI1NjM4WjAaMRgwFgYDVQQDEw9XSU4tTFUwOTI5OTE2MEYwggEiMA0GCSqG
-| SIb3DQEBAQUAA4IBDwAwggEKAoIBAQDA4MPIi4yCYJlBv6vwXF5lu5NbQCPQxk4q
-| 7lJsJSvTRSIFi2fVl3l+rWTr69mutnVqo+bMilJorN2B6DqsCJBV+7pITFSICM6b
-| +G/sOEblVust2tUU8NLbAiBH9oXhF0P5dIhMzRC4pcZjhCRR+IcOjnABTCkdAchD
-| Mf4XQJx6GZOXBCBMXGW/vCKZ0q8gti7Hxs36W1ctbj8/i5obd0k0BonMlvRwKxvi
-| 7SS+3NrBpc4XivD23YIqCNzErOB19DV3JqZMvbE+NhLEQA51Au2svYwgoJcIIyEC
-| HBuINXeFBB+p5dMwp4wppkHN0CuquUyCBZvIPlDW8SAOAc5tgUOJAgMBAAGjJDAi
-| MBMGA1UdJQQMMAoGCCsGAQUFBwMBMAsGA1UdDwQEAwIEMDANBgkqhkiG9w0BAQsF
-| AAOCAQEAAziR6P3nN9/EKLhZqJKgkWP9FyNr9CusD78wem1C5fn9h7SjS1PQEhn1
-| Gi50rlcUmII4E8Bnv6g/1QZnZIsPtVzO3bokQfbhTEzWOQ8RScB3ZQ+Tg7xM4duA
-| NZdzR1/hjOOmPBV4ih3+AKmbEZ63V3PuJOn2+0/NsGXzGKhaNhlAof58lXkXrt9x
-| DvmpyfER7oq/3+kPQhXlNK7VZ/dp26BLFQT12be1yyeVck2n/90pXTxV/COaIdsF
-| q7RJPVO+4FCua77sUUSV9E5CL3oOFJT5MjkAMEkoKsU9InWHhA5w+ndQqDgXIb40
-| 7b3pD6AiS/ZEvSpzCyeVnDprZxVIaQ==
-|_-----END CERTIFICATE-----
-|_ssl-date: 2020-05-17T20:55:54+00:00; +2s from scanner time.
-Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
-Host script results:
-|_clock-skew: mean: 1s, deviation: 0s, median: 0s
-| p2p-conficker:
-|   Checking for Conficker.C or higher...
-|   Check 1 (port 8918/tcp): CLEAN (Couldn t connect)
-|   Check 2 (port 27612/tcp): CLEAN (Couldn t connect)
-|   Check 3 (port 8570/udp): CLEAN (Failed to receive data)
-|   Check 4 (port 26852/udp): CLEAN (Timeout)
-|_  0/4 checks are positive: Host is CLEAN or ports are blocked
-| smb2-security-mode:
-|   2.02:
-|_    Message signing enabled but not required
-| smb2-time:
-|   date: 2020-05-17T20:55:09
-|_  start_date: N/A
-```
+## Introduction to SIEM
 
-### #2 What port is for the web server?
+SIEM (Security Information and Event Management system) is a powerful tool designed to collect data from various endpoints and network devices, store it centrally, and perform correlation analysis. This overview covers the essential concepts needed to understand SIEM and its operation.
 
-```
-80/tcp   open     http          syn-ack     Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-| http-methods:
-|_  Supported Methods: OPTIONS
-```
+### Why Do We Need a SIEM?
 
-### #3 What port is for remote desktop service?
+Imagine managing a network with multiple Linux systems. As a cybersecurity professional, you need to monitor these systems' activities and their interactions outside the network. We can categorize these logs into two types:
 
-```
-3389/tcp open     ms-wbt-server syn-ack     Microsoft Terminal Services
-| rdp-ntlm-info:
-|   Target_Name: WIN-LU09299160F
-|   NetBIOS_Domain_Name: WIN-LU09299160F
-|   NetBIOS_Computer_Name: WIN-LU09299160F
-|   DNS_Domain_Name: WIN-LU09299160F
-|   DNS_Computer_Name: WIN-LU09299160F
-|   Product_Version: 10.0.17763
-|_  System_Time: 2020-05-17T20:55:06+00:00
+**Host-Centric Logs:**
+- File access by users
+- File access timestamps
+- Authentication attempts
+- Process executions
+- PowerShell executions
 
-```
+**Network-Centric Logs:**
+- SSH connections
+- FTP connections
+- Web traffic
 
-### #4 What is a possible password in one of the pages web crawlers check for?
+Network devices generate hundreds of logs per second, making manual analysis overwhelming, especially during an incident. SIEM consolidates all these logs into a single platform, allowing for correlation, real-time alerts, 24/7 monitoring, and data visualization.
 
-![](https://imgur.com/8qHBf4I.png)
+### Log Ingestion
 
-```
-UmbracoIsTheBest!
-```
+![Log Ingestion in SIEM](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/593abd2bfd9fb31329bd1a6a80bf5ee0.png)
 
-### #5 What CMS is the website using?
+Logs provide valuable information for identifying security issues. SIEM solutions use various methods to ingest logs, including:
 
-![](https://imgur.com/tO0uPGK.png)
+1. **Agent/Forwarder:** A lightweight tool installed on endpoints that captures and sends important logs to the SIEM server. Splunk refers to this as a forwarder.
+2. **Syslog:** A widely used protocol for real-time data collection from systems like web servers and databases, sending it to a centralized destination.
+3. **Manual Upload:** Some SIEM solutions, like Splunk and ELK, allow users to ingest offline data for quick analysis. Once ingested, the data is normalized for analysis.
+4. **Port-Forwarding:** SIEM solutions can be configured to listen on specific ports, with endpoints forwarding data to the SIEM instance on these ports.
 
-```
-Umbraco
-```
+### Components of Splunk
 
-### #6 What is the domain of the website?
+Splunk has three basic components:
 
-![](https://imgur.com/Uv84TYU.png)
+1. **Forwarder:** A lightweight agent/program installed on endpoints to collect and forward necessary system logs to the main Splunk server.
+    - Examples: Web servers, Windows machines (generating Event Logs, PowerShell, Sysmon data), Linux hosts, databases (generating DB connection requests, responses, and errors).
 
-```
-Anthem.com
-```
+2. **Indexer:** Organizes and normalizes data, storing it in specific fields for easy retrieval, making it simple to search and analyze.
 
-### #7 What's the name of the Administrator
+3. **Search Head:** An input bar for searching indexed logs using Splunk's Search Processing Language (SPL).
 
-![](https://imgur.com/5L9VyBz.png)
+### SIEM in Incident Response (IR)
 
-```
-Solomon Grundy
-```
+SIEM is crucial in the Incident Response (IR) process due to its comprehensive capabilities:
 
-### #8 Can we find find the email address of the administrator?
+1. **Real-Time Monitoring and Alerts:** SIEM continuously monitors network activity, generating real-time alerts for suspicious activities. This immediate notification allows for swift incident detection.
 
-![](https://imgur.com/VQAVV6P.png)
+2. **Data Correlation:** By correlating logs from different sources, SIEM can identify patterns and link related events, providing a broader understanding of incidents.
 
-The pattern of the email address is the first letter of the firstname and the lastname
+3. **Forensic Analysis:** SIEM stores historical data, enabling detailed forensic analysis to trace the root cause of an incident and understand its impact.
 
-```
-Solomon Grundy
-SG@anthem.com
-```
+4. **Automated Response:** Some SIEM solutions integrate with other security tools to automate responses to certain types of incidents, enhancing the efficiency of the IR process.
 
----
+5. **Reporting and Compliance:** SIEM generates reports that help in compliance with regulatory requirements and provide valuable insights for post-incident reviews.
 
-Our beloved admin left some flags behind that we require to gather before we proceed to the next task..
+### Incident Handling Lifecycle
 
-### #1 What is flag 1?
+**1. Preparation:**
+   - Documenting requirements
+   - Defining policies
+   - Incorporating security controls (e.g., EDR, SIEM, IDS, IPS)
+   - Hiring and training staff
 
-![](https://imgur.com/KkA9LOL.png)
+**2. Detection and Analysis:**
+   - Detecting incidents
+   - Analyzing incidents
+   - Investigating alerts from security controls
+   - Threat hunting
 
-```
-THM{L0L_WH0_US3S_M3T4}
-```
+**3. Containment, Eradication, and Recovery:**
+   - Preventing incident spread
+   - Securing the network
+   - Isolating infected hosts
+   - Removing infection traces
+   - Regaining control
 
-### #2 What is flag 2?
+**4. Post-Incident Activity/Lessons Learned:**
+   - Identifying security weaknesses
+   - Improving security measures
+   - Updating detection rules
+   - Training staff
 
-![](https://imgur.com/55tHmK6.png)
 
-```
-THM{G!T_G00D}
-```
+### We investigate logs with SEIM according to the Cyber-Kill-Chain 
 
-### #3 What is flag 3?
+### Cyber-Kill Chain
 
-![](https://imgur.com/YvwnqzM.png)
+1. Reconnaissance
+2. Weaponization
+3. Delivery
+4. Exploitation
+5. Installation
+6. Command & Control
+7. Actions on Objectives
 
-```
-THM{L0L_WH0_D15}
-```
+### Conclusion
 
-### #4 What is flag 4?
-
-![](https://imgur.com/2ENt53z.png)
-
-```
-THM{AN0TH3R_M3TA}
-```
-
----
-
-Let's get into the box using the intel we gathered.
-
-### #1 Let's figure out the username and password to log in to the box.(The box is not on a domain)
-
-```
-No awnser is needed
-```
-
-### #2 Gain initial access to the machine, what is the contents of user.txt?
-
-Let's use remmina desktop and connect to the VM
-
-![](https://imgur.com/fYSDTzv.png)
-
-```
-login : SG
-password : UmbracoIsTheBest!
-```
-
-![](https://imgur.com/i2RqrfL.png)
-
-```
-THM{N00T_NO0T}
-```
-
-### #3 Can we spot the admin password?
-
-```
-I tried this
-dir *.txt /s /p
-But nothing came out sadly.. :(
-```
-
-Let's try something else..
-
-This one is a little bit tricky but very simple to execute.
-
-First step :
-
-Show all the hidden files
-
-![](https://imgur.com/q7LCXUf.png)
-
-Second step :
-
-Go to the C: Drive and as you can see there is a backup hidden folder
-
-Right click on it and go to the proprieties uncheck the "hidden" square
-
-![](https://imgur.com/Y9ojzwm.png)
-
-Third and final step :
-
-Add SG (the user) to have the permission to see the file
-
-Right click → Security tab → Advanced → Add
-
-![](https://imgur.com/tJWUQxo.png)
-
-And finally click on the Check Names button and then allow all permissions to the file
-
-![](https://imgur.com/IUKzcKh.png)
-
-![](https://imgur.com/pFneQcx.png)
-
-```
-ChangeMeBaby1MoreTime
-```
-
-### #4 Escalate your privileges to root, what is the contents of root.txt?
-
-You have two possibilities here..
-
-You can relaunch the remmina app and log with the Administrator account
-
-Or you can stay with the SG's account and go to the following path
-
-```
-C:\Users\Administrator\Desktop
-```
-
-The Administrator's password is :
-
-```
-ChangeMeBaby1MoreTime
-```
-
-![](https://imgur.com/NsIeOts.png)
-
-```
-THM{Y0U_4R3_1337}
-```
-
-
+SIEM is an indispensable tool in cybersecurity, especially in Incident Response. It enables real-time monitoring, efficient data correlation, detailed forensic analysis, automated responses, and comprehensive reporting. By integrating SIEM into your cybersecurity strategy, you can enhance your organization's ability to detect, analyze, and respond to security incidents effectively, ensuring a robust defense against cyber threats.
