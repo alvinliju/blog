@@ -1,1 +1,12 @@
-<svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg"><path d="m5 17h62v38h-62z" fill="#fff"/><path d="m5 17h21v38h-21z" fill="#1e50a0"/><path d="m46 17h21v38h-21z" fill="#d22f27"/><path d="m5 17h62v38h-62z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="550px" height="550px" viewBox="0 0 550 550" version="1.1">
+  <g id="surface1">
+    <!-- Saffron stripe -->
+    <path style="stroke:none;fill-rule:nonzero;fill:rgb(100%,59%,0%);fill-opacity:1;" d="M 38.195312 129.859375 L 511.804688 129.859375 L 511.804688 243.285156 L 38.195312 243.285156 Z M 38.195312 129.859375 "/>
+    <!-- White stripe -->
+    <path style="stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 38.195312 243.285156 L 511.804688 243.285156 L 511.804688 356.710938 L 38.195312 356.710938 Z M 38.195312 243.285156 "/>
+    <!-- Green stripe -->
+    <path style="stroke:none;fill-rule:nonzero;fill:rgb(19%,55.7%,0%);fill-opacity:1;" d="M 38.195312 356.710938 L 511.804688 356.710938 L 511.804688 470.140625 L 38.195312 470.140625 Z M 38.195312 356.710938 "/>
+  </g>
+</svg>
+
