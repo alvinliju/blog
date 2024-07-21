@@ -1,6 +1,6 @@
 import type { Socials } from "./types";
 
-export const SITE_URL = "";
+export const SITE_URL = "https://main--alvin-cyb-blog.netlify.app/";
 export const SITE_TITLE = "Alvin Liju - Cybersecurity Researcher";
 export const SITE_DESCRIPTION =
   "Alvin Liju - I am just a kid who's curious about tech";
