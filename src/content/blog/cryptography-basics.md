@@ -21,12 +21,6 @@ Think of cryptography as a secret language only you and your friend know so that
 
 **Cryptographic Security**: Comparing provable security with probable security.
 
-### Terms to keep in mind:
-
-**Plain Text**: Plain text is the text/data before encryption.
-
-**Cipher Text**:The text/data after encryption is called cipher text, you'll see this word in any cryptographic blog or book. 
-
 ## Encryption
 - Encryption is the principal application of cryptography 
 - Makes data incomprehensible(idk if its a proper word) in order to ensure Confidentiality
@@ -49,15 +43,8 @@ Encoding is not done for security its basically transforming data from one form 
 
 Examples of encoding techniques include ASCII, UNICODE, URL encoding, and Base64. These methods are commonly used for tasks such as ensuring special characters display correctly on web pages or preparing binary data for transmission over media designed to handle text.
 
-### Encryption
-Now lets go back to the fundamental concept of cryptography which is Encryption,
-lets see various encryption methods and what are the applications of encryption
-
-Creating a comprehensive write-up about cryptography from scratch is a great way to solidify your understanding of encryption and its various aspects. Let's break down each of these topics in detail:
 
 ## Basics of Cryptography
-
-Cryptography is the science of securing information by transforming it into a secure format. It ensures the confidentiality, integrity, and authenticity of data. The two primary goals of cryptography are to protect data from unauthorized access and to verify the authenticity of a message.
 
 ### Key Terms
 
