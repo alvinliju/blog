@@ -34,7 +34,7 @@ This PoC demonstrates the discovery and analysis of security vulnerabilities in 
         - **TLS 1.0**
         - **TLS 1.1**
     
-    https://i.imgur.com/bJCxWMa.png
+   [SSL scan report](https://i.imgur.com/bJCxWMa.png)
     
     - **Security Grade:** B 
 #### Vulnerabilities
